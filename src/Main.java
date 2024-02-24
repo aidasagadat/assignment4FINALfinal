@@ -2,10 +2,13 @@ import java.sql.*;
 import java.util.*;
 public class Main {
     public static void main(String[] args) {
+
         Scanner scanner = new Scanner(System.in);
+
         try {
-            Connection cn = DriverManager.getConnection("jdbc:postgresql://localhost:5432/postgres", "postgres", "1234");
-            Statement statement = cn.createStatement();
+
+            Connection connection = DriverManager.getConnection("jdbc:postgresql://localhost:5432/postgres", "postgres", "1234");
+            Statement statement = connection.createStatement();
             String thistable = "CREATE TABLE IF NOT EXISTS Buldak " +
                     "(id INTEGER NOT NULL PRIMARY KEY, " +
                     "name VARCHAR(255) NOT NULL, " +
@@ -37,7 +40,7 @@ public class Main {
                     "price INTEGER NOT NULL);";
             statement.executeUpdate(thistable);
             statement.close();
-            cn.close();
+            connection.close();
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -50,7 +53,7 @@ public class Main {
                 System.out.println("2) Update product's information");
                 System.out.println("3) Print all available products");
                 System.out.println("4) Sell a product");
-                System.out.println("5) Return a product");
+               // System.out.println("5) Return a product");
                 System.out.println("6) Delete a product");
                 System.out.println("7) Exit");
                 System.out.println("Enter your choice:");
@@ -65,9 +68,9 @@ public class Main {
                         scanner.nextLine();
                         Ramen newRamen = findRamenbyID(id, true);
                         if (newRamen== null) {
-                            System.out.println("Enter product name:");
+                            System.out.println("Name");
                             String name = scanner.nextLine();
-                            System.out.println("Enter product price:");
+                            System.out.println("Price:");
                             int price = scanner.nextInt();
                             scanner.nextLine();
                             switch (choice){
@@ -91,11 +94,22 @@ public class Main {
                                     newProduct4.add();
                                     System.out.println("Ramen added successfully.");
                                     break;
-//                                case "5":
-//                                    Neogur newProduct5 = new Neogur(id, name, price);
-//                                    newProduct5.add();
-//                                    System.out.println("Ramen added successfully.");
-//                                    break;
+
+
+
+
+                                case "5":
+                                    Neogur newProduct5 = new Neogur(id, name, price);
+                                    newProduct5.add();
+                                    System.out.println("Ramen added successfully.");
+                                    break;
+
+
+
+
+
+
+
                                 default:
                                     System.out.println("Errorrrr! Enter again!");
                             }
@@ -249,4 +263,29 @@ public class Main {
         }
         return ramens;
     }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 }
