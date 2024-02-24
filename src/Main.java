@@ -2,11 +2,9 @@ import java.sql.*;
 import java.util.*;
 public class Main {
     public static void main(String[] args) {
-
         Scanner scanner = new Scanner(System.in);
 
         try {
-
             Connection connection = DriverManager.getConnection("jdbc:postgresql://localhost:5432/postgres", "postgres", "1234");
             Statement statement = connection.createStatement();
             String thistable = "CREATE TABLE IF NOT EXISTS Buldak " +
@@ -53,7 +51,7 @@ public class Main {
                 System.out.println("2) Update product's information");
                 System.out.println("3) Print all available products");
                 System.out.println("4) Sell a product");
-               // System.out.println("5) Return a product");
+                System.out.println("5) Return a product");
                 System.out.println("6) Delete a product");
                 System.out.println("7) Exit");
                 System.out.println("Enter your choice:");
@@ -105,11 +103,6 @@ public class Main {
                                     break;
 
 
-
-
-
-
-
                                 default:
                                     System.out.println("Errorrrr! Enter again!");
                             }
@@ -155,11 +148,11 @@ public class Main {
                                     newProduct4.update();
                                     System.out.println("Ramen info updated successfully. If not, please check(you may enter wrong id!)");
                                     break;
-//                                case "5":
-//                                    Neogur newProduct5 = new Neogur(new_id, new_name, new_price);
-//                                    newProduct5.update();
-//                                    System.out.println("Ramen info updated successfully. If not, please check(you may enter wrong id!)");
-//                                    break;
+                                case "5":
+                                    Neogur newProduct5 = new Neogur(new_id, new_name, new_price);
+                                    newProduct5.update();
+                                    System.out.println("Ramen info updated successfully. If not, please check(you may enter wrong id!)");
+                                   break;
                                 default:
                                     System.out.println("Errorrrr! Enter again!");
                             }
